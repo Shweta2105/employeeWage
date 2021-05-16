@@ -2,21 +2,23 @@
 
 empRatePerHr=20
 empCheck=$((RANDOM%3))
-isPresent=1
+isFulltime=1
 isParttime=2
-if [ $empCheck -eq $isPresent ]
-then
-	echo "Employee is present"
 
-		empHrs=8
-elif [ $empCheck -eq $isParttime ]
-then
-		echo "Employee working parttime"
-		empHrs=4
 
-else
-	echo "Employee is absent"
-	empHrs=0
-fi
+case $empCheck in
+			$isFulltime)
+				echo "Employee is present"
+				empHrs=8
+			;;
+			$isParttime)
+				echo "Employee working parttime"
+				empHrs=4
+			;;
+			*)
+				echo "Employee is absent"
+				empHrs=0
+			;;
+esac
 wage=$(($empRatePerHr*$empHrs))
 
