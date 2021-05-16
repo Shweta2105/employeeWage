@@ -10,6 +10,7 @@ MAX_HRS_IN_MONTH=100
 totalEmpHrs=0
 totalWorkingDays=0
 
+declare -A empDailyWage
 function getWorkingHours() {
  case $1 in
 			$IS_FULLTIME)
@@ -42,3 +43,4 @@ do
 done
 wage=$(($EMP_RATE_PER_HR*$totalEmpHrs))
 echo Daily Wage : ${empDailyWage[@]}
+echo All Day : ${!empDailyWage[@]}
